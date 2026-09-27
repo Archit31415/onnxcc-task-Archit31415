@@ -21,13 +21,16 @@ endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-set(CMAKE_IGNORE_PREFIX_PATH "/opt/anaconda3")
-
-include(FetchContent)
+set(CMAKE_IGNORE_PREFIX_PATH "/opt/anaconda3" "/opt/homebrew" "/usr/local")
+set(CMAKE_IGNORE_PATH "/opt/homebrew/include" "/opt/homebrew/lib" "/usr/local/include" "/usr/local/lib")
 
 # Disable tests and shared libraries for protobuf subproject
 set(protobuf_BUILD_TESTS OFF CACHE BOOL "Disable tests for subproject" FORCE)
 set(protobuf_BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries for subproject" FORCE)
+set(protobuf_ABSL_PROVIDER "module" CACHE STRING "Use bundled abseil" FORCE)
+
+
+include(FetchContent)
 
 # To match onnx 1.23 requirements
 # Fetch it first to avoid conflicts with the system-installed protobuf
