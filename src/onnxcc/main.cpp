@@ -1,7 +1,3 @@
-#include <iostream>
-#include "onnxcc/version.h"
+#include "onnxcc/cli/cli.hpp"
 
-int main() {
-    std::cout << "Welcome to ONNXCC " << onnxcc::get_version() << " (" << onnxcc::get_version_codename() << ")!" << std::endl;
-    return 0;
-}
+int main(int argc, char **argv) { return onnxcc::cli::run(argc, argv); }
